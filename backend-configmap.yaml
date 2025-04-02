@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook-backend-config
+data:
+  DATABASE_HOST: guestbook-db-service # Internal DNS name for the database service
+  DATABASE_PORT: "5432"
+  # Add any other backend configurations here
