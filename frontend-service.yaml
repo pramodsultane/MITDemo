@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-frontend-service
+spec:
+  selector:
+    app: guestbook-frontend
+  ports:
+    - protocol: TCP
+      port: 80 # External port
+      targetPort: 3000 # Frontend application port
+  type: ClusterIP # Use ClusterIP for internal access, Ingress will handle external access
