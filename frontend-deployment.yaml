@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: guestbook-frontend
+  template:
+    metadata:
+      labels:
+        app: guestbook-frontend
+    spec:
+      containers:
+        - name: frontend-app
+          image: nginx:latest
+          ports:
+            - containerPort: 3000 # Adjust if your frontend uses a different port
+          env:
+            - name: REACT_APP_API_URL # Example environment variable for frontend to connect to backend
+              value: "http://guestbook-backend-service:8080" # Internal URL of the backend service
